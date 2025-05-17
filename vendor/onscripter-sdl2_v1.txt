@@ -1,0 +1,65 @@
+ubuntu-18.04.3-4.4-es-odroid-goA-20200923.img
+odroid/odroid
+
+sudo apt update
+sudo apt install unzip make gcc g++ nano gdb
+sudo apt install libsdl2-dev liblua5.1-0-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libbz2-dev libfontconfig1-dev libogg-dev libvorbis-dev  
+
+unzip jh10001-onscripter-jh-a11f51d5728f.zip
+cp Makefile.Linux Makefile
+nano Makefile
+(remove lua and SIMD depends)
+make
+
+winscp copy libSDL2-2.0.so.0.12.0 to /home/odroid/libSD2-2.0.so.0
+
+unzip onscripter_cn_test.zip
+cd onscripter_cn_test
+LD_LIBRARY_PATH=/home/odroid ../jh10001-onscripter-jh-a11f51d5728f/onscripter
+LD_LIBRARY_PATH=/home/odroid gdb ./onscripter
+
+sudo apt install libgbm-dev libdrm-dev pkg-config
+sudo apt install libx11-dev libxext-dev
+
+
+
+
+
+Thread 1 "onscripter" received signal SIGSEGV, Segmentation fault.
+KMSDRM_DestroyWindow (_this=0x55556812f0, window=0x55556ccee0)
+    at /home/odroid/SDL-master/src/video/kmsdrm/SDL_kmsdrmvideo.c:877
+877     /home/odroid/SDL-master/src/video/kmsdrm/SDL_kmsdrmvideo.c: No such file or directory.
+(gdb) bt
+#0  KMSDRM_DestroyWindow (_this=0x55556812f0, window=0x55556ccee0)
+    at /home/odroid/SDL-master/src/video/kmsdrm/SDL_kmsdrmvideo.c:877
+#1  0x0000007fb7f8603c in KMSDRM_CreateWindow (_this=0x55556812f0,
+    window=0x55556ccee0)
+    at /home/odroid/SDL-master/src/video/kmsdrm/SDL_kmsdrmvideo.c:860
+#2  0x0000007fb7f61f30 in SDL_CreateWindow_REAL (title=0x0, x=<optimized out>,
+    y=<optimized out>, w=<optimized out>, h=<optimized out>, flags=8198)
+    at /home/odroid/SDL-master/src/video/SDL_video.c:1556
+#3  0x0000005555571724 in ONScripter::initSDL (this=0x55555ed940 <ons>)
+    at ONScripter.cpp:170
+#4  0x00000055555729cc in ONScripter::init (this=0x55555ed940 <ons>)
+    at ONScripter.cpp:405
+#5  0x000000555555c904 in main (argc=1, argv=0x7ffffff550)
+    at onscripter_main.cpp:408
+
+
+#!/bin/sh
+
+cd /home/odroid/onscripter_cn_test
+export LD_LIBRARY_PATH=/home/odroid
+./onscripter > a.txt 2>&1
+
+
+	
+	
+cd /opt/system
+chmod +x ./ons.sh
+reboot
+
+
+
+
+	
