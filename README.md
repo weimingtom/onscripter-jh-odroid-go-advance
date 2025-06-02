@@ -49,6 +49,7 @@ export LD_LIBRARY_PATH=/home/odroid/SDL-master/test/
 * and then launch testsprite2 from CONFIGURATION menu
 
 ## How to build onscripter-jh and launch /opt/system/ons.sh with CONFIGURATION menu      
+* (See upper, how to build my own libSDL2-2.0.so.0.12.0) You must first copy your own libSDL2-2.0.so.0 to /home/odroid, see LD_LIBRARY_PATH=/home/odroid
 ```
 ubuntu-18.04.3-4.4-es-odroid-goA-20200923.img
 odroid/odroid
