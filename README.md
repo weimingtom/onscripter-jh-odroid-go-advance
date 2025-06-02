@@ -1,7 +1,7 @@
 # onscripter-jh-odroid-go-advance
 [WIP] My ONScripter-jh ‌ODROID-GO Advance and RK2020 with Ubuntu and RGB10 with Ubuntu port,
 
-## Three version of ‌ODROID-GO Advance good SDL2 (see below How to build my own libSDL2), all are good      
+## Three good SDL2 Modifications for ‌ODROID-GO Advance (see below How to build my own libSDL2), all are good      
 * (I always use this) https://github.com/AreaScout/SDL    
 * (Can be used but I don't use) https://github.com/OtherCrashOverride/sdl-go2/tree/master  
 * (Can be used but I don't use) https://github.com/OtherCrashOverride/sdl-go2/tree/tearing  
