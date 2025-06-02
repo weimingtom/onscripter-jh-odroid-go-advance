@@ -1,12 +1,18 @@
 # onscripter-jh-odroid-go-advance
 [WIP] My ONScripter-jh ‌ODROID-GO Advance and RK2020 with Ubuntu and RGB10 with Ubuntu port,
 
+## Three version of ‌ODROID-GO Advance good SDL2 (see below How to build my own libSDL2), all are good      
+* (I always use this) https://github.com/AreaScout/SDL    
+* (Can be used but I don't use) https://github.com/OtherCrashOverride/sdl-go2/tree/master  
+* (Can be used but I don't use) https://github.com/OtherCrashOverride/sdl-go2/tree/tearing  
+
 ## How to build my own libSDL2-2.0.so.0.12.0 and launch /opt/system/testsprite2.sh with CONFIGURATION menu 
 * DO NOT USE SYSTEM's libSDL2-2.0.so.0.8.0, it does not work          
 * Use this prebuilt so file directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/out_bin/libSDL2-2.0.so.0  
 * Build it manually, see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/testsprite2_v1.txt
 * And see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/SDL-master_v1_v1.txt  
-* Don't use ./configure directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/SDL2-2.32.6.tar.gz    
+* Don't use ./configure directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/AreaScout_SDL-master.zip
+* You can use AreaScout_SDL-master.zip or sdl-go2-master.zip or sdl-go2-tearing.zip all available
 * USE this: LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm  
 ```
 ubuntu-18.04.3-4.4-es-odroid-goA-20200923.img
@@ -15,8 +21,8 @@ odroid/odroid
 sudo apt install libgbm-dev libdrm-dev pkg-config
 sudo apt install libx11-dev libxext-dev
 
-tar xzf SDL2-2.32.6.tar.gz  
-cd SDL2-2.32.6/  
+unzip AreaScout_SDL-master.zip  
+cd SDL-master/  
 (undefined reference to `c_RkRgaInit')
 LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm
 (don't use ./configure as possible)
