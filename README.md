@@ -13,7 +13,7 @@
 * And see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/SDL-master_v1_v1.txt  
 * Don't use ./configure directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/AreaScout_SDL-master.zip
 * You can use AreaScout_SDL-master.zip or sdl-go2-master.zip or sdl-go2-tearing.zip all available
-* USE this: LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm  
+* USE this to configure: LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm  
 ```
 ubuntu-18.04.3-4.4-es-odroid-goA-20200923.img
 odroid/odroid
@@ -37,7 +37,7 @@ gcc -o testsprite2 testsprite2.c -g -O2 -D_REENTRANT -I/usr/include/SDL2 -DHAVE_
 Replace /usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0.8.0 with my built libSDL2-2.0.so.0.12.0
 (better to copy libSDL2-2.0.so.0.12.0 to /home/odroid/SDL-master/test/libSDL2-2.0.so.0)
 ```
-* Write to /opt/system/testsprite2.sh, for adding LD_LIBRARY_PATH to search new built libSDL2-2.0.so.0  
+* Write to /opt/system/testsprite2.sh (with WinSCP or SSH/PuTTY), for adding LD_LIBRARY_PATH to search new built libSDL2-2.0.so.0  
 ```
 #!/bin/sh
 
@@ -63,6 +63,8 @@ nano Makefile
 (remove lua and SIMD depends)
 make
 
+cp onscripter ../onscripter_cn_test/  
+
 winscp copy libSDL2-2.0.so.0.12.0 to /home/odroid/libSD2-2.0.so.0
 
 unzip onscripter_cn_test.zip
@@ -73,7 +75,7 @@ LD_LIBRARY_PATH=/home/odroid gdb ./onscripter
 sudo apt install libgbm-dev libdrm-dev pkg-config
 sudo apt install libx11-dev libxext-dev
 ```
-* Write to ons.sh with ssh, and launch it from CONFIGURATION menu with game handheld system GUI    
+* Write to ons.sh with SSH/PuTTY (or with WinSCP), and launch it from CONFIGURATION menu with game handheld system GUI    
 ```
 #!/bin/sh
 
