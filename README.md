@@ -31,7 +31,7 @@ gcc -o testsprite2 testsprite2.c -g -O2 -D_REENTRANT -I/usr/include/SDL2 -DHAVE_
 Replace /usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0.8.0 with my built libSDL2-2.0.so.0.12.0
 (better to copy libSDL2-2.0.so.0.12.0 to /home/odroid/SDL-master/test/libSDL2-2.0.so.0)
 ```
-* Write to /opt/system/testsprite2.sh
+* Write to /opt/system/testsprite2.sh, for adding LD_LIBRARY_PATH to search new built libSDL2-2.0.so.0  
 ```
 #!/bin/sh
 
@@ -41,7 +41,6 @@ export LD_LIBRARY_PATH=/home/odroid/SDL-master/test/
 ```
 * need cd /opt/system/ && chmod +x ./testsprite2.sh
 * and then launch testsprite2 from CONFIGURATION menu
-* libSDL2-2.0.so.0
 
 ## How to build onscripter-jh and launch /opt/system/ons.sh with CONFIGURATION menu      
 ```
@@ -68,7 +67,7 @@ LD_LIBRARY_PATH=/home/odroid gdb ./onscripter
 sudo apt install libgbm-dev libdrm-dev pkg-config
 sudo apt install libx11-dev libxext-dev
 ```
-* Write to ons.sh
+* Write to ons.sh with ssh, and launch it from CONFIGURATION menu with game handheld system GUI    
 ```
 #!/bin/sh
 
@@ -79,3 +78,4 @@ export LD_LIBRARY_PATH=/home/odroid
 * cd /opt/system
 * chmod +x ./ons.sh
 * reboot
+* And then launch /opt/system/ons.sh with CONFIGURATION menu  
