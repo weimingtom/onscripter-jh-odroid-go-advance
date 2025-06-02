@@ -68,6 +68,8 @@ Sdl2 not working without x11 mode in odroid - SDL Development - Simple Directmed
 * You can use AreaScout_SDL-master.zip or sdl-go2-master.zip or sdl-go2-tearing.zip, all three are available, but I always use AreaScout/SDL    
 ```
 git clone https://github.com/AreaScout/SDL  
+(I dont' use this) or git clone https://github.com/OtherCrashOverride/sdl-go2
+(I dont' use this) or git clone -b tearing https://github.com/OtherCrashOverride/sdl-go2
 ```
 * USE this to configure: LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm  
 ```
