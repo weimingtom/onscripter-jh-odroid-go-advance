@@ -4,7 +4,8 @@
 ## How to build my own libSDL2-2.0.so.0.12.0 and launch /opt/system/testsprite2.sh with CONFIGURATION menu 
 * DO NOT USE SYSTEM's libSDL2-2.0.so.0.8.0, it does not work          
 * Use this prebuilt so file directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/out_bin/libSDL2-2.0.so.0  
-* Build it manually, see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/testsprite2_v1.txt    
+* Build it manually, see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/testsprite2_v1.txt
+* And see https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/SDL-master_v1_v1.txt  
 * Don't use ./configure directly, https://github.com/weimingtom/onscripter-jh-odroid-go-advance/blob/master/vendor/SDL2-2.32.6.tar.gz    
 * USE this: LDFLAGS=-lrga ./configure --disable-video-opengl --enable-video-kmsdrm  
 ```
@@ -42,8 +43,39 @@ export LD_LIBRARY_PATH=/home/odroid/SDL-master/test/
 * and then launch testsprite2 from CONFIGURATION menu
 * libSDL2-2.0.so.0
 
-## How to launch onscripter-jh   
+## How to build onscripter-jh and launch /opt/system/ons.sh with CONFIGURATION menu      
 ```
 ubuntu-18.04.3-4.4-es-odroid-goA-20200923.img
 odroid/odroid
+
+sudo apt update
+sudo apt install unzip make gcc g++ nano gdb
+sudo apt install libsdl2-dev liblua5.1-0-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libbz2-dev libfontconfig1-dev libogg-dev libvorbis-dev  
+
+unzip jh10001-onscripter-jh-a11f51d5728f.zip
+cp Makefile.Linux Makefile
+nano Makefile
+(remove lua and SIMD depends)
+make
+
+winscp copy libSDL2-2.0.so.0.12.0 to /home/odroid/libSD2-2.0.so.0
+
+unzip onscripter_cn_test.zip
+cd onscripter_cn_test
+LD_LIBRARY_PATH=/home/odroid ../jh10001-onscripter-jh-a11f51d5728f/onscripter
+LD_LIBRARY_PATH=/home/odroid gdb ./onscripter
+
+sudo apt install libgbm-dev libdrm-dev pkg-config
+sudo apt install libx11-dev libxext-dev
 ```
+* Write to ons.sh
+```
+#!/bin/sh
+
+cd /home/odroid/onscripter_cn_test
+export LD_LIBRARY_PATH=/home/odroid
+./onscripter > a.txt 2>&1
+```
+* cd /opt/system
+* chmod +x ./ons.sh
+* reboot
